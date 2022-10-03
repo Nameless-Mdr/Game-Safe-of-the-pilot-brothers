@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using GameSafeApp.Properties;
 
 namespace GameSafeApp
 {
@@ -13,13 +13,17 @@ namespace GameSafeApp
 
         private Button[,] _btnMass;
 
+        private readonly Bitmap _imageVertical = GameSafeApp.Image.Handle_Vertical;
+        private readonly Bitmap _imageHorizon = GameSafeApp.Image.Handle_Horizon;
+
+        private Stopwatch _stopWatch;
+
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        { }
+            _stopWatch = new Stopwatch();
+        }
 
         private void button2_Click(object sender, System.EventArgs e)
         {
@@ -40,8 +44,8 @@ namespace GameSafeApp
             var rand = new Random();
             var temp = rand.Next(2);
 
-            Bitmap image = temp == 0 ? GameSafeApp.Image.Handle_Vertical : GameSafeApp.Image.Handle_Horizon;
-            
+            Bitmap image = temp == 0 ? _imageVertical : _imageHorizon;
+
             _btnMass = new Button[_sizeSafe, _sizeSafe];
 
             _sumElems = _btnMass.Length * temp;
@@ -56,14 +60,13 @@ namespace GameSafeApp
                 {
                     _btnMass[i, j] = new Button();
 
-                    _btnMass[i, j].Width = 50;
-                    _btnMass[i, j].Height = 50;
+                    _btnMass[i, j].Width = 70;
+                    _btnMass[i, j].Height = 70;
 
                     _btnMass[i, j].Left = left;
                     _btnMass[i, j].Top = top;
 
                     _btnMass[i, j].Name = Convert.ToString(i * _sizeSafe + j);
-                    _btnMass[i, j].Text = "" + temp;
 
                     _btnMass[i, j].BackgroundImage = image;
                     _btnMass[i, j].BackgroundImageLayout = ImageLayout.Stretch;
@@ -75,10 +78,12 @@ namespace GameSafeApp
                     top += _btnMass[i, j].Height + 2;
                 }
 
-                left += 50;
+                left += 70;
             }
 
             CreateSafe();
+
+            _stopWatch.Start();
         }
 
         private void ButtonOnClick(object sender, EventArgs eventArgs)
@@ -93,10 +98,12 @@ namespace GameSafeApp
 
                 if (SafeIsOpen())
                 {
+                    _stopWatch.Stop();
+
                     panel1.Controls.Clear();
                     panel1.BackgroundImage = GameSafeApp.Image._1650921531_25_vsegda_pomnim_com_p_gora_deneg_foto_27;
                     var lab = new Label();
-                    lab.Text = "Congratulation!";
+                    lab.Text = "Congratulate!";
                     panel1.Controls.Add(lab);
                 }
             }
@@ -110,6 +117,7 @@ namespace GameSafeApp
             _btnMass = null;
             _sizeSafe = 0;
             _sumElems = 0;
+            _stopWatch.Reset();
         }
 
         private bool SafeIsOpen()
@@ -138,32 +146,33 @@ namespace GameSafeApp
         {
             for (int i = 0; i < _sizeSafe; i++)
             {
-                if (_btnMass[i, _j].Text == "0")
+                if (_btnMass[i, _j].BackgroundImage == _imageVertical)
                 {
-                    _btnMass[i, _j].Text = "1";
-                    _btnMass[i, _j].BackgroundImage = GameSafeApp.Image.Handle_Horizon;
+                    _btnMass[i, _j].BackgroundImage = _imageHorizon;
                     _sumElems += 1;
                 }
-                else if (_btnMass[i, _j].Text == "1")
+                else if (_btnMass[i, _j].BackgroundImage == _imageHorizon)
                 {
-                    _btnMass[i, _j].Text = "0";
-                    _btnMass[i, _j].BackgroundImage = GameSafeApp.Image.Handle_Vertical;
+                    _btnMass[i, _j].BackgroundImage = _imageVertical;
                     _sumElems -= 1;
                 }
 
-                if (_btnMass[_i, i].Text == "0" && _j != i)
+                if (_btnMass[_i, i].BackgroundImage == _imageVertical && _j != i)
                 {
-                    _btnMass[_i, i].Text = "1";
-                    _btnMass[_i, i].BackgroundImage = GameSafeApp.Image.Handle_Horizon;
+                    _btnMass[_i, i].BackgroundImage = _imageHorizon;
                     _sumElems += 1;
                 }
-                else if (_btnMass[_i, i].Text == "1" && _j != i)
+                else if (_btnMass[_i, i].BackgroundImage == _imageHorizon && _j != i)
                 {
-                    _btnMass[_i, i].Text = "0";
-                    _btnMass[_i, i].BackgroundImage = GameSafeApp.Image.Handle_Vertical;
+                    _btnMass[_i, i].BackgroundImage = _imageVertical;
                     _sumElems -= 1;
                 }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label2.Text = _stopWatch.Elapsed.ToString("hh':'mm':'ss':'fff");
         }
     }
 }

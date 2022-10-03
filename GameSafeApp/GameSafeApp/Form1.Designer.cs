@@ -29,11 +29,14 @@ namespace GameSafeApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -54,9 +57,10 @@ namespace GameSafeApp
             // 
             // button1
             // 
+            this.button1.AutoSize = true;
             this.button1.Location = new System.Drawing.Point(457, 28);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(91, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Очистить поле";
             this.button1.UseVisualStyleBackColor = true;
@@ -69,12 +73,13 @@ namespace GameSafeApp
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Location = new System.Drawing.Point(12, 86);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(520, 269);
+            this.panel1.Size = new System.Drawing.Size(717, 433);
             this.panel1.TabIndex = 3;
             this.panel1.AutoSizeChanged += new System.EventHandler(this.ButtonOnClick);
             // 
             // button2
             // 
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button2.Location = new System.Drawing.Point(281, 28);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -82,6 +87,21 @@ namespace GameSafeApp
             this.button2.Text = "Создать";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(665, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "0:00:00.000";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -92,7 +112,8 @@ namespace GameSafeApp
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = global::GameSafeApp.Image.cropped_Grey_Background_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(560, 400);
+            this.ClientSize = new System.Drawing.Size(741, 531);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
@@ -101,7 +122,6 @@ namespace GameSafeApp
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,6 +134,8 @@ namespace GameSafeApp
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
