@@ -63,9 +63,39 @@ namespace GameSafeApp {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1650921531_25_vsegda_pomnim_com_p_gora_deneg_foto_27 {
+            get {
+                object obj = ResourceManager.GetObject("1650921531_25-vsegda-pomnim-com-p-gora-deneg-foto-27", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cropped_Grey_Background_1 {
             get {
                 object obj = ResourceManager.GetObject("cropped_Grey_Background_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Handle_Horizon {
+            get {
+                object obj = ResourceManager.GetObject("Handle-Horizon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Handle_Vertical {
+            get {
+                object obj = ResourceManager.GetObject("Handle-Vertical", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

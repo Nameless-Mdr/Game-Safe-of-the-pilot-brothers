@@ -38,7 +38,7 @@ namespace GameSafeApp
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(66, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 13);
@@ -64,11 +64,14 @@ namespace GameSafeApp
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(30, 109);
+            this.panel1.AutoSize = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Location = new System.Drawing.Point(12, 86);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(993, 548);
+            this.panel1.Size = new System.Drawing.Size(520, 269);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.AutoSizeChanged += new System.EventHandler(this.ButtonOnClick);
             // 
             // button2
             // 
@@ -84,13 +87,18 @@ namespace GameSafeApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = global::GameSafeApp.Image.cropped_Grey_Background_1;
-            this.ClientSize = new System.Drawing.Size(1043, 675);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(560, 400);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);

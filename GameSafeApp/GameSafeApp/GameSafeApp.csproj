@@ -91,5 +91,14 @@
   <ItemGroup>
     <None Include="Resources\cropped-Grey-Background-1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1650921531_25-vsegda-pomnim-com-p-gora-deneg-foto-27.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Handle-Horizon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Handle-Vertical.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
