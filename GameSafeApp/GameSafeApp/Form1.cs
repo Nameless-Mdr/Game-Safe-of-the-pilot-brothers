@@ -16,7 +16,7 @@ namespace GameSafeApp
         private readonly Bitmap _imageVertical = GameSafeApp.Image.Handle_Vertical;
         private readonly Bitmap _imageHorizon = GameSafeApp.Image.Handle_Horizon;
 
-        private Stopwatch _stopWatch;
+        private readonly Stopwatch _stopWatch;
 
         public Form1()
         {
@@ -27,11 +27,9 @@ namespace GameSafeApp
 
         private void button2_Click(object sender, System.EventArgs e)
         {
-            panel1.BackgroundImage = null;
-
             if (_sizeSafe > 2)
             {
-                textBox1.Text = "Сейф уже создан!";
+                textBox1.Text = "Сначала очистите поле!";
                 return;
             }
 
@@ -102,8 +100,13 @@ namespace GameSafeApp
 
                     panel1.Controls.Clear();
                     panel1.BackgroundImage = GameSafeApp.Image._1650921531_25_vsegda_pomnim_com_p_gora_deneg_foto_27;
+
                     var lab = new Label();
+
                     lab.Text = "Congratulate!";
+                    lab.ForeColor = Color.Green;
+                    lab.BackColor = Color.White;
+
                     panel1.Controls.Add(lab);
                 }
             }
